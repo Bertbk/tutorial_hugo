@@ -77,19 +77,19 @@ A "theorem" can moreover be referenced using `thm/ref` using three different way
 
 1. **Inline implicite** (order of arguments matters) :
   ```md
-  Personnaly, my favorite is the {{</* thm/ref "thm:me" "covfefe Theorem" /*/>}}.
+  Personally, my favorite is the {{</* thm/ref "thm:me" "covfefe Theorem" /*/>}}.
   ```
-  Personnaly, my favorite is the {{< thm/ref "thm:me" "covfefe Theorem" />}}.
+  Personally, my favorite is the {{< thm/ref "thm:me" "covfefe Theorem" />}}.
 2. **Inline explicite**  (order of arguments does not matter!):
   ```md
-  Personnaly, my favorite is the {{</* thm/ref ref="thm:me" text="covfefe Theorem" /*/>}}.
+  Personally, my favorite is the {{</* thm/ref ref="thm:me" text="covfefe Theorem" /*/>}}.
   ```
-  Personnaly, my favorite is the {{< thm/ref ref="thm:me" text="covfefe Theorem" />}}.
+  Personally, my favorite is the {{< thm/ref ref="thm:me" text="covfefe Theorem" />}}.
 3. **Environment**:
   ```md
-  Personnaly, my favorite is the {{</* thm/ref "thm:me"*/>}}covfefe Theorem{{</* /thm/ref */>}}.
+  Personally, my favorite is the {{</* thm/ref "thm:me"*/>}}covfefe Theorem{{</* /thm/ref */>}}.
   ```
-  Personnaly, my favorite is the {{< thm/ref "thm:me">}}covfefe Theorem{{< /thm/ref >}}.
+  Personally, my favorite is the {{< thm/ref "thm:me">}}covfefe Theorem{{< /thm/ref >}}.
 
 {{% alert note %}}
 As you notice and contrary to $\LaTeX$, the cross reference do not provide the number of the theorem. This is a little bit complicated as the numbering is done through CSS counter and I believe it is not necessary. However, if you are interested in, we can discuss about it. 
