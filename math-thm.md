@@ -31,13 +31,16 @@ editable = true
 
 +++
 
+<a href="https://github.com/Bertbk/hugo-thm"><button type="button" class="btn btn-outline-primary">Download hugo-thm on <i class="fab fa-github"></i> Github</button></a>
+
+
 You may have see that my course are online, no pdf files but directly as webpages. I explain here how to achieve a similar result, using `hugo` and the `Academic` theme.
 
 The `Academic` theme provides a [nice layout (=design) for documentation](https://sourcethemes.com/academic/docs/writing-markdown-latex/). The math expression can be written mostly as in a basic $\LaTeX$ file thanks to MathJax (just set `math = true` in the frontmatter of your `.md` file). Some features were however missing for a math course, especially the "AMS Theorem environment" of $\LaTeX$.
 
 ## Features
 
-I have developped a "`thm` package" written as [Hugo shortcodes](https://gohugo.io/content-management/shortcodes/#readout) to mimic it. A shortcode is a portion of code that `Hugo` will escape from the Markdown, making it possible to call external functions inside the Markdown. It features
+I have developped a ["`thm` package"](https://github.com/Bertbk/hugo-thm) written as [Hugo shortcodes](https://gohugo.io/content-management/shortcodes/#readout) to mimic it. A shortcode is a portion of code that `Hugo` will escape from the Markdown, making it possible to call external functions inside the Markdown. It features
 
 - Customizable design
 - Different type: Theorem, Proposition, Lemma, Corollary, Definition
