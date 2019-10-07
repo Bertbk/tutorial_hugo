@@ -65,9 +65,9 @@ leads to this
 {{< thm/thm type="theorem" name="of me" label="thm:me" >}}
 This theorem proves that covfefe.
 {{< /thm/thm >}}
-{{< thm/thm proof >}}
+{{< thm/proof >}}
 The proof is very good. I like proof. I have big proof.
-{{< /thm/thm >}}
+{{< /thm/proof >}}
 
 You can change `type="theorem"` by `proposition`, `lemma`, `corollary` or `definition`.
 
