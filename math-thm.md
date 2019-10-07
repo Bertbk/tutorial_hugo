@@ -31,7 +31,7 @@ editable = true
 
 +++
 
-<a href="https://github.com/Bertbk/hugo-thm"><button type="button" class="btn btn-outline-primary">Download hugo-thm on <i class="fab fa-github"></i> Github</button></a>
+<a href="https://github.com/Bertbk/hugo-thm"><button type="button" class="btn btn-outline-primary"><i class="fab fa-github"></i> Download hugo-thm on Github</button></a>
 
 
 You may have see that my course are online, no pdf files but directly as webpages. I explain here how to achieve a similar result, using `hugo` and the `Academic` theme.
