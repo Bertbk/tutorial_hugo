@@ -9,7 +9,7 @@ toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 math = true
-weight = 100
+weight = 200
 diagram = true
 #markup = "mmark"
 
@@ -26,7 +26,7 @@ editable = true
   name = "Thm Environment"
   parent = "III. Math Course"
   identifier = "math"
-  weight = 100
+  weight = 200
   url=""
 
 +++

@@ -9,7 +9,7 @@ toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 math = false
-weight = 20
+weight = 100
 diagram = true
 #markup = "mmark"
 
@@ -26,7 +26,7 @@ editable = true
   name = "Git"
   parent = "II. Continuous Delivery"
   identifier = "git"
-  weight = 20
+  weight = 100
   url=""
 
 +++

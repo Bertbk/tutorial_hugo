@@ -9,7 +9,7 @@ toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 math = false
-weight = 30
+weight = 110
 diagram = true
 #markup = "mmark"
 
@@ -26,7 +26,7 @@ editable = true
   name = "Setting up Gitlab"
   parent = "II. Continuous Delivery"
   identifier = "deployment"
-  weight = 30
+  weight = 110
   url=""
 
 +++
