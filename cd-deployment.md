@@ -1,5 +1,5 @@
 +++
-title = "Setting up Gitlab"
+title = "Gitlab Page"
 
 date = 2019-09-30T00:00:00
 # lastmod = 2018-09-09T00:00:00
@@ -23,7 +23,7 @@ editable = true
 
 # Add menu entry to sidebar.
 [menu.website]
-  name = "Setting up Gitlab"
+  name = "Gitlab Page"
   parent = "II. Continuous Delivery"
   identifier = "deployment"
   weight = 110
