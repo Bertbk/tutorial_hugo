@@ -31,42 +31,34 @@ editable = true
 
 +++
 
-You do not want to use `git` and Gitlab? In that case, you can still deploy your website *manually*. Even if I would recommend the usage of `git` and a git server, I can understand that you prefer to use this manual method, especially if your website does not change that much!
+This page explains how to deploy your website *manually*. I still recommend you to learn `git` to store and save your source code (which is **not** stored on the webserver!) but this method is rather simple, especially if you do not change your website that much!
+
+## How ?
 
 {{% alert note %}}
-With this method, `git` is no more mandatory but remember that `git` helps you manage your history of files and, as a side effect, it creates a backup of your code on a remote server: if your computer crash, you will not be able to recover the code that has been used to build your website!
+Assumptions:
+
+- Your webpage URL is `https://website.com/~username/`
+- On the webserver, your public folder is named `~/public_html`
 {{% /alert %}}
 
-## Build the website 
-
-Simply type the following command:
+At the root of your website source code (on your computer), type the following commands in a terminal (the second line must obviously be modified accordingly):
 
 ```bash
 hugo
-```
-
-This create a `public` folder containing the website. You just now needs to send everything to the remote server.
-
-## Sending to server
-
-{{% alert note %}}
-I assume that:
-
-- The url of your webpage is `https://website.com/~myaccount/`
-- On the webserver, the public folder is named `~/public_html`
-
-Adapt the following steps to your case is needed. 
-{{% /alert %}}
-
-You can use `scp` to send the files to the remote, however, `scp` will override updated files but not remove the potential deprecated files: if you decided to unpublish a document, it will still be published! I suggest you use the `rsync` command instead:
-
-```bash
 rsync -avz --delete public/ username@webserver:~/public_html
 ```
 
-## Summary and script template
+The first command, `hugo`, creates a `public` folder containing the website. The second command, `rsync`, synchronizes the folders `public` and the remote one. 
 
-Here is a template for a script that does the two operation above. Copy it on the root of your website source code, adapt it and simply launch it everytimes you want to build and deploy your website!
+{{% alert note %}}
+- The `scp` command is not recommended because it does not remove deprecated files: if you decided to unpublish a document, it will not be erased and thus will still be published!
+- You can use a FTP software instead [such as Filezilla](https://filezilla-project.org/)
+{{% /alert %}}
+
+## Scripting
+
+These two commands can be obviously merged in a script, for example:
 
 ```bash
 #!/usr/bin/env bash
@@ -74,11 +66,11 @@ Here is a template for a script that does the two operation above. Copy it on th
 hugo
 rsync -avz --delete public/ username@webserver:~/public_html
 ```
-And then, if the file is named `deploy.sh`, you simply have to type
+That way, every time you want to upload your modification, you simply have to launch the script:
 ```bash
 sh deploy.sh
 ```
 
 ## SSH keys: login without password
 
-You may have to type your password everytime you update your website. If that is the case, I highly recommend you [to use SSH keys](http://www.linuxproblem.org/art_9.html).
+You may have to type your password everytime you update your website. If that is the case, I highly recommend you [to use SSH keys](http://www.linuxproblem.org/art_9.html). It is quite simple to do yet very convenient.

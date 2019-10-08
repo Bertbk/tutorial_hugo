@@ -67,16 +67,16 @@ Back on the git repository, at the root of it, change the url of your remote and
 git remote set-url origin git@plmlab.math.cnrs.fr:username/username.pages.math.cnrs.fr.git
 git push origin master
 ```
-`git` might be unhappy and ask you to push in a different way, do what it asks you to do, for example it can be that:
+`git` might be unhappy and asks you to push using a different command: please do what it asks you to do, for example it can be the following command:
 ```bash
 git push --set-upstream origin master
 ```
 
 After refreshing your gitlab page on your browser, you should see your repository: the files, the name of last commit, ...
 
-## Gitlab Page: deployment
+## Gitlab Page: Continuous Deployment (CD)
 
-### Setting the Continuous Deployment (CD)
+### Gitlab CI (Continuous Integration)
 
 Your website is almost ready, you just need to explain `Gitlab` that it must build your website each times you push changes:
 
@@ -88,7 +88,7 @@ Your website is almost ready, you just need to explain `Gitlab` that it must bui
    2. `Settings` → `General`→ Expand the `Visibility, project features, permissions`. Enable `Page access control` to `everyone` (do not forget to `save changes`!)
 3. Do a dummy modification in your code, commit and push to activate the runner of Gitlab
 
-If everything works fine, you should be able to see your website on your browser after, say, 5 to 10 minuts. If you did not received an error email and if your website is still unaccessible, you should try to
+If everything works fine, you should be able to access your website at `https://username.pages.math.cnrs.fr` on your browser after, say, 5 to 10 minuts. If you did not received an error email and if your website is still unaccessible, you should try to
 
 - Refresh your browser multiple times
 - Clear the cache of your browser
@@ -102,4 +102,4 @@ You can check the process (pipeline and jobs) in your Gitlab's interface in `CI/
 
 ## Set a SSH key to loggin without password
 
-Every time you `push` your repo, you must type your password. Boring, right? SSH keys are the tools you need: please have a look at [the Gitlab documentation](https://docs.gitlab.com/ee/ssh/) which explains it very well.
+Every time you `push` your repo, you must type your password. Boring, right? SSH keys are the tools you need: please have a look at [the Gitlab documentation](https://docs.gitlab.com/ee/ssh/) which provides clear explanation.
