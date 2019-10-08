@@ -55,28 +55,30 @@ First, create an empty repository in your Gitlab's account. On the interface, cl
 
 ### Change the remote url
 
-When your repository has been created, and in its main page, click on "clone" and copy/paste the "clone with https" line (if you want to use SSH (recommended!) see later). It should be something like
+When your repository has been created, and in its main page, click on "clone" and copy/paste the "clone with ssh" line (you can use `https` but it slower and you have to ). It should be something like 
+```bash
+# If PLMLAB
+git@plmlab.math.cnrs.fr:username/username.pages.math.cnrs.fr.git
+# else if Gitlab.com
+git@gitlab.com:username/username.gitlab.io.git
 ```
-https://plmlab.math.cnrs.fr/username/username.pages.math.cnrs.fr.git
-```
-or (if Gitlab.com)
-```
-https://gitlab.com/username/username.gitlab.io.git
-```
-Back on the git repository, at the root of it, simply remove the previous remote (`academic_kickstart`) and add your remote, and push your repo:
-```
-git remote remove origin
-git remote add origin https://plmlab.math.cnrs.fr/username/username.pages.math.cnrs.fr.git -u
+Back on the git repository, at the root of it, change the url of your remote and then push to your repo:
+```bash
+git remote set-url origin git@plmlab.math.cnrs.fr:username/username.pages.math.cnrs.fr.git
 git push origin master
+```
+`git` might be unhappy and ask you to push in a different way, do what it asks you to do, for example it can be that:
+```bash
+git push --set-upstream origin master
 ```
 
 After refreshing your gitlab page on your browser, you should see your repository: the files, the name of last commit, ...
 
 ## Gitlab Page: deployment
 
-### Setting the Continuous Deployement (CD)
+### Setting the Continuous Deployment (CD)
 
-Your website is almost ready, you just need now to explain to `Gitlab` that you want it to build your website, that is run the `hugo` commands and copy the result on the webserver. Just follows these step
+Your website is almost ready, you just need to explain `Gitlab` that it must build your website each times you push changes:
 
 1. Depending on your webserver, download or copy/past the right `.gitlab-ci.yml` and place it at the root of your folder: 
    - PLMLab: {{< gist Bertbk 2e0d1a5bef4c7c575b3de482da43bc6b >}}
@@ -98,11 +100,6 @@ This is due to the fact that it takes time for a new website to be "known".
 
 You can check the process (pipeline and jobs) in your Gitlab's interface in `CI/CD` → `Jobs` (or directly at `https://plmlab.math.cnrs.fr/username/username.pages.math.cnrs.fr/-/jobs`)
 
-## Stop typing password: SSH key
+## Set a SSH key to loggin without password
 
-Every time you `push` your repo, you must type your password. Boring, right? SSH and SSH keys are the tools you need. After following the step described [in the documentation](https://docs.gitlab.com/ee/ssh/), you might need to change the remote of your repo (it was based on `https` instead of `ssh` protocol):
-```bash
-git remote remove origin
-git remote add origin git@plmlab.math.cnrs.fr:username/username.pages.math.cnrs.fr.git
-```
-That's all!
+Every time you `push` your repo, you must type your password. Boring, right? SSH keys are the tools you need: please have a look at [the Gitlab documentation](https://docs.gitlab.com/ee/ssh/) which explains it very well.
