@@ -33,7 +33,6 @@ editable = true
 
 <a href="https://github.com/Bertbk/hugo-thm"><button type="button" class="btn btn-outline-primary"><i class="fab fa-github"></i> Download hugo-thm on Github</button></a>
 
-
 You may have see that my course are online, no pdf files but directly as webpages. I explain here how to achieve a similar result, using `hugo` and the `Academic` theme.
 
 The `Academic` theme provides a [nice layout (=design) for documentation](https://sourcethemes.com/academic/docs/writing-markdown-latex/). The math expression can be written mostly as in a basic $\LaTeX$ file thanks to MathJax (just set `math = true` in the frontmatter of your `.md` file). Some features were however missing for a math course, especially the "AMS Theorem environment" of $\LaTeX$.
@@ -98,33 +97,81 @@ A "theorem" can moreover be referenced using `thm/ref` using three different way
 As you notice and contrary to $\LaTeX$, the cross reference do not provide the number of the theorem. This is a little bit complicated as the numbering is done through CSS counter and I believe it is not necessary. However, if you are interested in, we can discuss about it. 
 {{% /alert %}}
 
-## Installing it
+## Installation
 
-### Installing
+There are 2.5 ways of installing it:
 
-1. In your website root folder, type
-  ```
-  mkdir -p layouts/partials/shortcodes i18n assets/css
-  git clone https://github.com/Bertbk/hugo-thm.git
-  cp -r hugo-thm/thm layouts/partials/shortcodes/thm
-  cp -r hugo-thm/i18n i18n/thm
-  cp hugo-thm/css/thm.css assets/css/thm.css
-  rm -rf hugo-thm
-  ```
-2. In `config/_default/params.toml` file, force `hugo` to load the `css` file
-  ```toml
-  plugins_css = ["thm"]
-  ```
+1. As a theme (simplest, recommended), through...
+  - ... Direct download (non `git` users)
+  - ... `git` submodule (updatable, customisable)
+2. As a Go module (easy but not customisable)
 
+### As a Theme
 
-That's it! If you work locally with `hugo serve` you might be force to relaunch it (quit and relaunch).
+1. Add `"hugo-thm"` as a theme in `config/_default/config.toml`. Place it after `"academic"` (order matters):
+    ```toml
+    #params.toml
+    # Name of Academic theme folder in `themes/`.
+    theme = ["academic", "hugo-thm"]
+    ```
+2. Add `"thm"` to `plugins_css` in `config/_default/params.toml`:
+    ```toml
+    # params.toml
+    plugins_css = ["thm"]
+    ```
 
-To deploy your website with this package, do not forget to add the new files to git.
+You now have to download the "theme" using one of these way:
 
-### Update
+1. Direct Download :
+   - Download [the last version](https://github.com/Bertbk/hugo-thm/archive/master.zip)
+   - Extract and place `hugo-thm` folder in your `themes` folder
+2. Git submodule. At the root your folder, type the following command
+    ```bash
+    git submodule add https://github.com/Bertbk/hugo-thm.git themes/hugo-thm
+    ```
 
-To update this package, the best think to do is, sadly, to "re-do" the installation process and override the files.
+{{% alert note %}}
+Some remarks:
 
-### Customisation
+- To use `git submodule`, your folder must also be a git repo!
+- Do not forget to commit/add `.gitmodules`
+- If you have set SSH key then you can use `ssh` instead of `https`:
+    ```bash
+    git submodule add git@github.com:Bertbk/hugo-thm.git themes/hugo-thm
+    ```
+  You can modify the `.gitmodules` file accordingly. 
+- If, in addition to SSH, your website is automatically build through Gitalb page. You might need to add your ssh key to Gitlab variable and mofidy your `.gitlab-ci`.
+{{% /alert %}}
 
-If you know a little bit about the CSS then is it quite easy, you juste have to change `thm.css` file. If you do not know about CSS but want to change the colors, no problem, have a look at `thm.css` file and seach for the colors, you will quickly understand how it works.
+### (Hu)Go Module
+
+Add the following line at the end of your `config/_default/config.toml`:
+```toml
+#config.toml
+# Modules
+[module]
+  proxy = "direct"
+  
+  [[module.imports]]
+    disable = false
+    ignoreConfig = false
+    path = "github.com/Bertbk/hugo-thm"
+```
+
+Then type the following commands at the root of your folder
+```
+hugo mod init `pwd`
+hugo mod get -u
+```
+
+{{% alert note %}}
+If you use Gitlab Page, you must add these line in your `.gitlab-ci.yml`
+{{% /alert %}}
+
+## Customization
+
+If you know a little bit about the CSS then is it quite easy, the main file being `thm.css`. If you do not know about CSS but want to change the colors, no problem, have a look at `thm.css` file and search for the colors, you will quickly understand how it works.
+
+{{% alert note %}}
+It seems that the css file are hidden when installing this package as a Go Module.
+{{% /alert %}}
