@@ -114,7 +114,12 @@ There are 2.5 ways of installing it:
     # Name of Academic theme folder in `themes/`.
     theme = ["academic", "hugo-thm"]
     ```
-2. Add `"thm"` to `plugins_css` in `config/_default/params.toml`:
+2. If your academic version is...
+  - Greater than v4.6: create (if not already done) a file in `assets/scss/custom.scss` and add this line
+    ```scss
+    @import "thm";
+    ```
+  - Less than v4.6: Add `"thm"` to `plugins_css` in `config/_default/params.toml`:
     ```toml
     # params.toml
     plugins_css = ["thm"]
@@ -170,7 +175,7 @@ If you use Gitlab Page, you must add these line in your `.gitlab-ci.yml`
 
 ## Customization
 
-If you know a little bit about the CSS then is it quite easy, the main file being `thm.css`. If you do not know about CSS but want to change the colors, no problem, have a look at `thm.css` file and search for the colors, you will quickly understand how it works.
+If you know a little bit about the CSS then is it quite easy, the main file being `assets/scss/thm.scss`. If you do not know about CSS but want to change the colors, no problem, have a look at `assets/scss/thm.scss` file and search for the colors, you will quickly understand how it works.
 
 {{% alert note %}}
 It seems that the css file are hidden when installing this package as a Go Module.
